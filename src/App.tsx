@@ -15,14 +15,19 @@ const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-
-        <Route path='/' element={<Protected><Layout /></Protected>}>
+        <Route
+          path="/"
+          element={
+            <Protected>
+              <Layout />
+            </Protected>
+          }
+        >
           <Route index element={<Main />} />
         </Route>
-
       </Routes>
     </BrowserRouter>
   )
