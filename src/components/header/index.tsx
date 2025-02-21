@@ -1,25 +1,25 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-// import UserInfo from "./user-info";
+import useUser from "../../hooks/useUser";
+import useAuth from "../../hooks/useAuth";
+
 
 const Header: FC = () => {
+
+    const { user, isLoading, error } = useUser()
+    const { logout } = useAuth()
+
+    console.log("User", user?.firstName)
+
     return (
-        <div className="grid grid-cols-3 items-center bg-fa-white p-4 md:p-5 lg:p-6 xl:p-8 text-dark-gray rounded-[12px] md:rounded-[16px] lg:rounded-[20px] xl:rounded-[24px] mb-6 md:mb-10 lg:mb-15 xl:mb-20">
-            <nav className="flex gap-10 font-semibold max-lg:hidden">
-                <a>Yeni Çıkanlar 🔥</a>
-                <a>Erkek</a>
-                <a>Kadın</a>
-            </nav>
+        <div className="">
+            <h1>Header</h1>
 
-            <button className="lg:hidden">
-                <img src="/hamburger.svg" />
-            </button>
+            <h3>{user?.firstName}</h3>
+            <h3>{user?.lastName}</h3>
 
-            <Link to="/" className="flex justify-center">
-                <img src="/logo.svg" alt="KICKS" />
-            </Link>
 
-            {/* <UserInfo /> */}
+            <button className="bg-amber-400 p-1 rounded" onClick={() => logout.mutate()}>Çıkış Yap</button>
         </div>
     );
 };
