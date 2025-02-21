@@ -4,10 +4,12 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Main from './pages/main'
 import Layout from './components/layout'
+import useUser from './hooks/useUser'
 
 
 const Protected = ({ children }: { children: React.ReactNode }) => {
-  return true ? <>{children}</> : <Navigate to='/login' />
+  const { isAuthenticated } = useUser()
+  return isAuthenticated ? <>{children}</> : <Navigate to='/login' />
 }
 
 
