@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { shoesApi } from "../services/api";
 
 
-export function useShoues() {
+export function useShoes() {
 
     const shoes = useQuery({
         queryKey: ['shoes'],

@@ -14,10 +14,10 @@ const Main: FC = () => {
             <h1 className='text-[20px] md:text-[26px] lg:text-[30px] xl:text-[36px] font-semibold mb-4 md:mt-[28px] xl:mt-[32px]'>Sana Uygun Seçenekler</h1>
 
             <div className='grid grid-cols-4 gap-4'>
-                <div className='max-ld:hidden'>
+                {/* <div className='max-ld:hidden'>
                     <Filter />
-                </div>
-                <div className='col-span-4 lg:col-span-3'>
+                </div> */}
+                <div className='col-span-4'>
                     <List />
                 </div>
             </div>

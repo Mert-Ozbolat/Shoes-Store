@@ -5,6 +5,7 @@ import Register from './pages/register'
 import Main from './pages/main'
 import Layout from './components/layout'
 import useUser from './hooks/useUser'
+import Detail from './pages/detail'
 
 
 const Protected = ({ children }: { children: React.ReactNode }) => {
@@ -29,6 +30,7 @@ const App: FC = () => {
           }
         >
           <Route index element={<Main />} />
+          <Route path='/shoe/:id' element={<Detail />} />
         </Route>
       </Routes>
     </BrowserRouter>
