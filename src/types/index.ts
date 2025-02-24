@@ -3,10 +3,10 @@ export interface User {
     firstName: string;
     lastName: string;
     email: string;
-    role: 'user' | 'admin';
+    role: "user" | "admin";
     createdAt: string;
     updatedAt: string;
-    __v: 0
+    __v: 0;
 }
 
 export interface LoginData {
@@ -24,5 +24,22 @@ export interface RegisterData {
 export interface AuthResponse {
     message: string;
     accessToken: string;
-    user: User
+    user: User;
 }
+
+export interface Shoe {
+    _id: string;
+    name: string;
+    picture: string[];
+    description: string;
+    isNew?: boolean;
+    discount: number;
+    size: string;
+    color: string;
+    gender: "men" | "women";
+    price: number;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export type ShoeData = Omit<Shoe, "_id" | "picture" | "createdAt" | "updatedAt">;

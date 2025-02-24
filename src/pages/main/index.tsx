@@ -17,7 +17,7 @@ const Main: FC = () => {
                 <div className='max-ld:hidden'>
                     <Filter />
                 </div>
-                <div className='cols-span-4 lg:col-span-3'>
+                <div className='col-span-4 lg:col-span-3'>
                     <List />
                 </div>
             </div>

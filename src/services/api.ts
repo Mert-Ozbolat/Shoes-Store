@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AuthResponse, LoginData, RegisterData, User } from "../types";
+import { AuthResponse, LoginData, RegisterData, Shoe, User } from "../types";
 
 
 const api = axios.create({
@@ -19,7 +19,7 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use((res) => res, async (err) => {
     const originalRequest = err.defineConfig;
 
-    if (err.response.status === 401 && !originalRequest._retry) {
+    if (err.response?.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         try {
             const res = await api.post<AuthResponse>('/auth/refresh')
@@ -42,4 +42,13 @@ export const authApi = {
     logout: () => api.post("/auth/logout"),
 
     getCurrentUser: () => api.get<{ user: User }>("auth/me"),
+};
+
+
+export const shoesApi = {
+    getAll: () => api.get<Shoe[]>("/shoes"),
+    getById: (id: string) => api.get<Shoe>(`/shoes/${id}`),
+    // create: (data: ShoeData) => api.post<Shoe>("/shoes", data),
+    // edit: (id: string, data: ShoeData) => api.put<Shoe>(`/shoes/${id}`, data),
+    // delete: (id: string) => api.delete(`/shoes/${id}`),
 };
