@@ -1,13 +1,44 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { Shoe } from '../../types'
+import { colors } from '../../utils/constants'
 
 interface Props {
     item: Shoe
 }
 
 const Color: FC<Props> = ({ item }) => {
+
+    const [selected, setSelected] = useState<string>("")
+
+    const toggle = (id: string) => {
+        setSelected(selected === id ? "" : id)
+    }
+
+
+
     return (
-        <div>Color</div>
+        <div>
+            <h2 className='font-semibold mb-3'>Renk Seçiniz</h2>
+
+            <div className='flex gap-5'>
+                {
+                    item.color.split(',').map((id) => {
+                        const color = colors.find((i) => i.id === id)
+                        const isSelected = selected === id
+                        return (
+                            <div
+                                onClick={() => toggle(id)}
+                                style={{ background: color?.code }}
+                                className={isSelected ? "ring-3 ring-my-blue rounded-full" : ""}
+                            >
+                                <div className='m-1 size-9 rounded-full cursor-pointer' style={{ background: color?.code }} />
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+        </div>
     )
 }
 
