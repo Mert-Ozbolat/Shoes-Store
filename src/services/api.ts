@@ -16,6 +16,24 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
+api.interceptors.response.use((res) => res, async (err) => {
+    const originalRequest = err.defineConfig;
+
+    if (err.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        try {
+            const res = await api.post<AuthResponse>('/auth/refresh')
+            const { accessToken } = res.data;
+            localStorage.setItem('accessToken', accessToken);
+            return api(originalRequest)
+        } catch (error) {
+            localStorage.removeItem('accessToken');
+            window.localStorage.href = '/login'
+            return Promise.reject(error)
+        }
+    }
+})
+
 
 export const authApi = {
     register: (data: RegisterData) =>
