@@ -6,6 +6,7 @@ import Main from './pages/main'
 import Layout from './components/layout'
 import useUser from './hooks/useUser'
 import Detail from './pages/detail'
+import Dashboard from './pages/dashboard'
 
 
 const Protected = ({ children }: { children: React.ReactNode }) => {
@@ -31,6 +32,7 @@ const App: FC = () => {
         >
           <Route index element={<Main />} />
           <Route path='/shoe/:id' element={<Detail />} />
+          <Route path='/admin' element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
