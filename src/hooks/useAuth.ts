@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { LoginData, RegisterData } from "../types";
-import { authApi } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { LoginData, RegisterData } from "../types";
+import { authApi } from "./../services/api";
 
 export default function useAuth() {
     const navigate = useNavigate();
@@ -24,12 +24,11 @@ export default function useAuth() {
 
     const logout = useMutation({
         mutationFn: () => authApi.logout(),
-        onSuccess: () => {
+        onSuccess: (res) => {
             localStorage.removeItem("accessToken");
             navigate("/login");
         },
     });
-
     return {
         login,
         register,

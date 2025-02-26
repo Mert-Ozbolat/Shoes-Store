@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { Shoe } from "../../types";
 import { Link } from "react-router-dom";
-import Badge from "./badge";
 import Price from "./price";
-
+import Badge from "./badge";
 
 interface Props {
     item: Shoe;
@@ -18,7 +17,9 @@ const Card: FC<Props> = ({ item }) => {
                     <img src={item.picture[0]} className="aspect-[9/10] rounded-3xl" />
                 </div>
 
-                <h2 className="font-bold line-clamp-2 my-4 lg:text-[20px] xl:text-[24px]">{item.name}</h2>
+                <h2 className="font-bold line-clamp-2 my-4 lg:text-[20px] xl:text-[24px]">
+                    {item.name}
+                </h2>
             </div>
 
             <Link
