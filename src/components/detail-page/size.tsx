@@ -1,35 +1,36 @@
 import { FC, useState } from "react";
 import { Shoe } from "../../types";
-import { numbers } from "../../utils/constants";
+import { colors } from "../../utils/constants";
 
 interface Props {
     item: Shoe;
 }
 
-const Size: FC<Props> = ({ item }) => {
+const Color: FC<Props> = ({ item }) => {
     const [selected, setSelected] = useState<string>("");
 
-    const toggle = (size: string) => {
-        setSelected(selected === size ? "" : size);
+    const toggle = (id: string) => {
+        setSelected(selected === id ? "" : id);
     };
 
     return (
         <div>
-            <h2 className="mb-4 font-semibold">Numara Seçiniz</h2>
-            <div className="grid grid-cols-5 gap-4">
-                {numbers.map((num) => {
-                    const inStock = item.size.split(",").includes(num);
-                    const found = selected === num;
+            <h2 className="font-semibold mb-3">Renk Seçiniz</h2>
+
+            <div className="flex gap-5">
+                {item.color.split(",").map((id) => {
+                    const color = colors.find((i) => i.id === id);
+
+                    const isSelected = selected === id;
+
                     return (
-                        <button
-                            onClick={() => toggle(num)}
-                            disabled={!inStock}
-                            type="button"
-                            className={`py-2 px-4 lg:px-0 text-center rounded-md cursor-pointer transition hover:bg-zinc-400
-                                 disabled:bg-[#D2D1D3] disabled:text-[#8F8C91] ${found ? "bg-black text-white" : "bg-white"
-                                } `}>
-                            {num}
-                        </button>
+                        <div className={isSelected ? "ring-3 ring-my-blue rounded-full" : ""}>
+                            <div
+                                onClick={() => toggle(id)}
+                                className="m-1 size-9 rounded-full cursor-pointer"
+                                style={{ background: color?.code }}
+                            />
+                        </div>
                     );
                 })}
             </div>
@@ -37,4 +38,4 @@ const Size: FC<Props> = ({ item }) => {
     );
 };
 
-export default Size;
+export default Color;
