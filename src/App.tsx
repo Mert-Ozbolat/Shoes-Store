@@ -1,18 +1,11 @@
 import { FC } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './pages/login'
 import Register from './pages/register'
 import Main from './pages/main'
-import Layout from './components/layout'
-import useUser from './hooks/useUser'
 import Detail from './pages/detail'
 import Dashboard from './pages/dashboard'
-
-
-const Protected = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useUser()
-  return isAuthenticated ? <>{children}</> : <Navigate to='/login' />
-}
+import Protected from './components/protected'
 
 
 const App: FC = () => {
@@ -22,18 +15,15 @@ const App: FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route
-          path="/"
-          element={
-            <Protected>
-              <Layout />
-            </Protected>
-          }
-        >
+        <Route path="/" element={<Protected />}>
           <Route index element={<Main />} />
           <Route path='/shoe/:id' element={<Detail />} />
-          <Route path='/admin' element={<Dashboard />} />
         </Route>
+
+        <Route path='admin' element={<Protected />} allowedRole='admin'>
+          <Route index element={<Dashboard />} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
   )
