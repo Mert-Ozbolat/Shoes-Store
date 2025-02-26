@@ -6,6 +6,8 @@ import Main from './pages/main'
 import Detail from './pages/detail'
 import Dashboard from './pages/dashboard'
 import Protected from './components/protected'
+import Create from './pages/create'
+import Edit from './pages/edit'
 
 
 const App: FC = () => {
@@ -20,10 +22,11 @@ const App: FC = () => {
           <Route path='/shoe/:id' element={<Detail />} />
         </Route>
 
-        <Route path='admin' element={<Protected />} allowedRole='admin'>
+        <Route path='admin' element={<Protected allowedRole='admin' />} >
           <Route index element={<Dashboard />} />
+          <Route path='create' element={<Create />} />
+          <Route path='edit/:id' element={<Edit />} />
         </Route>
-
       </Routes>
     </BrowserRouter>
   )

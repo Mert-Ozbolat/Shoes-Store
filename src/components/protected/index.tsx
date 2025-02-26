@@ -30,6 +30,8 @@ const Protected: FC<Prop> = ({ allowedRole }) => {
                 <Layout />
             </div>
         )
+
+    return <Navigate to='/' />
 }
 
 export default Protected
