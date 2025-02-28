@@ -1,50 +1,27 @@
-# React + TypeScript + Vite
+## **Shoe Store Web Application**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an e-commerce web application where users can purchase shoes and administrators can manage products. The project is developed using TypeScript and includes essential e-commerce features such as user authentication and an admin panel.
 
-Currently, two official plugins are available:
+## ✨**Features**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👤 **User Features**
 
-## Expanding the ESLint configuration
+Sign Up & Log In: Users can create an account and log in.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Product Listing: All users can view available products.
 
-- Configure the top-level `parserOptions` property like this:
+Color & Size Options: Users can see different color and size options for shoes and make their selections.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+👨‍💼 Admin Panel
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Product Management: Admin users can add new shoes, update existing products, or delete them.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## ⚡ **Technologies**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Frontend: React + TypeScript
+
+Backend: Node.js + Express + TypeScript
+
+Database: MongoDB
+
+Authentication: JWT Authentication
